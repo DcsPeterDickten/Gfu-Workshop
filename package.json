@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "database": "json-server -i isbn -w -d 300 ./src/mock/db.json"
   },
   "private": true,
   "dependencies": {

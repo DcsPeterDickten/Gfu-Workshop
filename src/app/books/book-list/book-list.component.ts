@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Book } from '../book';
+import { BookDataService } from '../book-data.service';
 
 @Component({
   selector: 'book-list',
@@ -7,26 +8,23 @@ import { Book } from '../book';
   styleUrls: ['./book-list.component.css'],
 })
 export class BookListComponent {
+  books: Book[] = [];
+
+  constructor(private bookDataService: BookDataService) {}
+
+  ngOnInit() {
+    this.bookDataService.getBooks().subscribe(
+      (books) => {
+        this.books = books;
+      },
+      (err) => {
+        alert('Fehler beim Laden der Bücher: ' + err.message);
+      }
+    );
+  }
+
   coverIsVisible: boolean = true;
 
-  books: Book[] = [
-    {
-      isbn: '12345',
-      title: 'Angular 16',
-      price: 12.23,
-      rating: 4.5,
-      coverUrl:
-        'https://m.media-amazon.com/images/I/71Wv+d6oP6L._AC_UY436_QL65_.jpg',
-    },
-    {
-      isbn: '12346',
-      title: 'Angular 17',
-      price: 19.23,
-      rating: 4.7,
-      coverUrl:
-        'https://m.media-amazon.com/images/I/71UdanWaD-L._AC_UY436_QL65_.jpg',
-    },
-  ];
   filterwert = '';
 
   getId(index: number, book: any) {
@@ -48,5 +46,13 @@ export class BookListComponent {
       book.rating += 0.1;
     }
     console.log({ book });
+  }
+
+  deleteBook(isbn: string) {
+    this.bookDataService.deleteBook(isbn).subscribe(() => {
+      this.bookDataService.getBooks().subscribe((books) => {
+        this.books = books;
+      });
+    });
   }
 }

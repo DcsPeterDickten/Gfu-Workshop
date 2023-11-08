@@ -7,10 +7,17 @@ import { FormsModule } from '@angular/forms';
 import { CalculatorComponent } from './shared/calculator/calculator.component';
 import { BookFilterPipe } from './books/book-filter.pipe';
 import { RatingComponent } from './shared/rating/rating.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent, BookListComponent, CalculatorComponent, BookFilterPipe, RatingComponent],
-  imports: [BrowserModule, FormsModule],
+  declarations: [
+    AppComponent,
+    BookListComponent,
+    CalculatorComponent,
+    BookFilterPipe,
+    RatingComponent,
+  ],
+  imports: [BrowserModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
