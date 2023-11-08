@@ -8,6 +8,9 @@ import { CalculatorComponent } from './shared/calculator/calculator.component';
 import { BookFilterPipe } from './books/book-filter.pipe';
 import { RatingComponent } from './shared/rating/rating.component';
 import { HttpClientModule } from '@angular/common/http';
+import { WelcomeComponent } from './shared/welcome/welcome.component';
+import { StartComponent } from './shared/start/start.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -16,8 +19,19 @@ import { HttpClientModule } from '@angular/common/http';
     CalculatorComponent,
     BookFilterPipe,
     RatingComponent,
+    WelcomeComponent,
+    StartComponent,
   ],
-  imports: [BrowserModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    RouterModule.forRoot([
+      { path: '', component: StartComponent, pathMatch: 'full' },
+      { path: 'books', component: BookListComponent },
+      { path: 'welcome', component: WelcomeComponent },
+    ]),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
