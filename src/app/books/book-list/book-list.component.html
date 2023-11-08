@@ -30,7 +30,9 @@
             <td><img *ngIf="coverIsVisible" [src]="book.coverUrl" [style.width.px]="30" /></td>
             <td>{{i+1}}: {{book.isbn}}</td>
             <td>{{book.title}}</td>
-            <td>{{book.rating}}</td>
+            <td>
+                <rating [stars]="book.rating" [id]="book.isbn" (notifyPlus)="plusClicked($event)"></rating>
+            </td>
             <td>{{book.price | currency:'EUR':'symbol':'1.2-2'}}</td>
             <td></td>
         </tr>

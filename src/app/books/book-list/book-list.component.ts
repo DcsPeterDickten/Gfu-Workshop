@@ -40,4 +40,13 @@ export class BookListComponent {
   toggleCover() {
     this.coverIsVisible = !this.coverIsVisible;
   }
+
+  plusClicked(idGeklicktesBuch: string) {
+    console.log({ event: idGeklicktesBuch });
+    const book = this.books.find((book) => book.isbn === idGeklicktesBuch);
+    if (book) {
+      book.rating += 0.1;
+    }
+    console.log({ book });
+  }
 }
