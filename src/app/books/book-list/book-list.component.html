@@ -1,2 +1,43 @@
-<p>book-list works</p>
+<p>Bücherliste von Peter</p>
 <br />
+
+<p>
+    <button (click)="toggleCover()">Cover {{coverIsVisible ? "aus" : "ein"}}blenden</button>
+</p>
+
+<div *ngIf="!books.length; else buecherliste">Leider noch keine Bücher vorhanden.</div>
+
+<p>
+    Filter:
+    <input type="text" [(ngModel)]="filterwert" />
+</p>
+
+{{filterwert}}
+
+<ng-template #buecherliste>{{books.length}} Bücher gefunden.
+
+    <table border="1">
+        <tr>
+            <td>Cover</td>
+            <td>ISBN</td>
+            <td>Titel</td>
+            <td>Rating</td>
+            <td>Preis</td>
+            <td>Aktion</td>
+        </tr>
+        <tr *ngFor="let book of books; index as i;trackBy:getId">
+            <td><img *ngIf="coverIsVisible" [src]="book.coverUrl" [style.width.px]="30" /></td>
+            <td>{{i+1}}: {{book.isbn}}</td>
+            <td>{{book.title}}</td>
+            <td>{{book.rating}}</td>
+            <td>{{book.price}}</td>
+            <td></td>
+        </tr>
+    </table>
+</ng-template>
+
+
+<!-- 
+{{books}}
+{{books | json}} 
+-->
