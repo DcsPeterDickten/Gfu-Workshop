@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
+import { Book } from '../book';
 
 @Component({
   selector: 'book-list',
@@ -7,7 +8,8 @@ import { Component } from '@angular/core';
 })
 export class BookListComponent {
   coverIsVisible: boolean = true;
-  books = [
+
+  books: Book[] = [
     {
       isbn: '12345',
       title: 'Angular 16',
