@@ -13,6 +13,10 @@ export class BookDataService {
     return this.http.get<Book[]>(`http://localhost:3000/books`);
   }
 
+  getBook(isbn: string): Observable<Book> {
+    return this.http.get<Book>(`http://localhost:3000/books/${isbn}`);
+  }
+
   deleteBook(isbn: string): Observable<any> {
     return this.http.delete(`http://localhost:3000/books/${isbn}`);
   }
