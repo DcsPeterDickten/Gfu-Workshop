@@ -9,7 +9,7 @@ import { StartComponent } from './start/start.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
 const SHARED_ROUTES: Routes = [
-  { path: '', component: StartComponent, pathMatch: 'full' },
+  { path: '', component: StartComponent, pathMatch : 'full' }, //
   { path: 'welcome', component: WelcomeComponent },
 ];
 

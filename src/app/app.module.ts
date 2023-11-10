@@ -16,7 +16,7 @@ import { SharedModule } from './shared/shared.module';
     HttpClientModule,
     BooksModule,
     SharedModule,
-    RouterModule.forRoot([]),
+    RouterModule.forRoot([], { useHash: true }),
   ],
   providers: [],
   bootstrap: [AppComponent],
