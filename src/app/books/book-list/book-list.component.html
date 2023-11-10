@@ -38,7 +38,10 @@
             </td>
             <td>{{book.title}}</td>
             <td>
-                <rating [stars]="book.rating" [id]="book.isbn" (notifyPlus)="plusClicked($event)"></rating>
+                <rating 
+                    [stars]="book.rating" 
+                    [id]="book.isbn" 
+                    (notifyPlus)="plusClicked($event)"></rating>
             </td>
             <td>{{book.price | currency:'EUR':'symbol':'1.2-2'}}</td>
             <td>

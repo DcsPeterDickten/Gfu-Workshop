@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Book } from '../book';
 import { BookDataService } from '../book-data.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'book-list',
@@ -10,17 +11,16 @@ import { BookDataService } from '../book-data.service';
 export class BookListComponent {
   books: Book[] = [];
 
-  constructor(private bookDataService: BookDataService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private bookDataService: BookDataService
+  ) {}
 
   ngOnInit() {
-    this.bookDataService.getBooks().subscribe(
-      (books) => {
-        this.books = books;
-      },
-      (err) => {
-        alert('Fehler beim Laden der Bücher: ' + err.message);
-      }
-    );
+    this.route.data.subscribe((data) => {
+      console.log({ data });
+      this.books = data['books'];
+    });
   }
 
   coverIsVisible: boolean = true;

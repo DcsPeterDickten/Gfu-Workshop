@@ -1,1 +1,8 @@
 <p>welcome works!</p>
+
+Zähler: {{count$ | async}}
+<!-- Zähler: {{count}} -->
+
+<button (click)="plusEins()">+</button>
+<button (click)="decrement()">-</button>
+<button (click)="reset()">Reset</button>
